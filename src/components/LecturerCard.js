@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, memo } from 'react';
 
 function PhotoPlaceholder({ name }) {
   const initials = name.split(' ').slice(0, 2).map((w) => w[0]).join('');
@@ -12,7 +12,7 @@ function PhotoPlaceholder({ name }) {
   );
 }
 
-export default function LecturerCard({ lecturer }) {
+function LecturerCard({ lecturer }) {
   const [open, setOpen] = useState(false);
   const [imgFailed, setImgFailed] = useState(false);
   const useRealPhoto = lecturer.photo && !imgFailed;
@@ -61,3 +61,5 @@ export default function LecturerCard({ lecturer }) {
     </div>
   );
 }
+
+export default memo(LecturerCard);
